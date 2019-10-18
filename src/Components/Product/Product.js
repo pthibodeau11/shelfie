@@ -1,8 +1,21 @@
 import React, { Component } from "react";
-import { Link, Switch, Route } from "react-router-dom";
-import UpdateForm from "../Form/UpdateForm";
+import { Link, HashRouter } from "react-router-dom";
+import axios from "axios";
 
 class Product extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  deleteProduct = () => {
+    axios
+      .delete(`/api/product/${this.props.element.product_id}`)
+      .then(response => {
+        console.log(response.data);
+        // this.props.updateAllProducts();
+      });
+  };
+
   render() {
     const {
       product_id,
@@ -16,22 +29,13 @@ class Product extends Component {
           <span>{product_image_url}</span>
           <span>{product_name}</span>
           <span>{product_price}</span>
-          <button>Delete</button>
-          <Link to="/updateForm">
-            <button>Edit</button>
-          </Link>
+          <button onClick={this.deleteProduct}>Delete</button>
+          <HashRouter>
+            <Link to="/updateproduct">
+              <button>Edit</button>
+            </Link>
+          </HashRouter>
         </div>
-
-        <Switch>
-          <Route
-            path="/updateForm"
-            component={UpdateForm}
-            // id={product_id}
-            // url={product_image_url}
-            // name={product_name}
-            // price={product_price}
-          />
-        </Switch>
       </>
     );
   }

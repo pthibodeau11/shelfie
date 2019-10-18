@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class UpdateForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {};
   }
 

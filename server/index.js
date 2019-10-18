@@ -22,5 +22,7 @@ app.use(express.json());
 // app.get / app.post / app.put / etc...
 app.get("/api/inventory", controller.getInventory);
 app.post("/api/product", controller.createProduct);
+app.delete("/api/product/:id", controller.deleteProduct);
+app.put("/api/product/:id", controller.updateProduct);
 
 app.listen(4000, () => console.log(`Server is listening on port 4000`));

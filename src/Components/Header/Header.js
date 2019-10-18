@@ -4,21 +4,19 @@ import React, { Component } from "react";
 import { HashRouter, Link } from "react-router-dom";
 import routes from "../../routes";
 
-class Header extends Component {
-  render() {
-    return (
-      <HashRouter>
-        {/* <Dashboard />
+function Header() {
+  return (
+    <HashRouter>
+      {/* <Dashboard />
         <Form /> */}
-        <header>
-          <div>Shelfie</div>
-          <Link to="/">Dashboard</Link>
-          <Link to="/addproduct">Add Inventory</Link>
-        </header>
-        {routes}
-      </HashRouter>
-    );
-  }
+      <header>
+        <div>Shelfie</div>
+        <Link to="/">Dashboard</Link>
+        <Link to="/addproduct">Add Inventory</Link>
+      </header>
+      {routes}
+    </HashRouter>
+  );
 }
 
 export default Header;

@@ -22,5 +22,32 @@ module.exports = {
         res.status(500).send({ errorMessage: "Oopsy Daisy - try again!" });
         console.log(err);
       });
+  },
+
+  deleteProduct: (req, res) => {
+    const dbInstance = req.app.get("db");
+    const { id } = req.params;
+    console.log(id);
+
+    dbInstance
+      .delete_product(id)
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        res.status(500).send({ errorMessage: "Didn't work" });
+        console.log(err);
+      });
+  },
+
+  updateProduct: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params, query } = req;
+
+    dbInstance
+      .update_product([params.id, query.desc])
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        res.status(500).send({ errorMessage: "Whoops" });
+        console.log(err);
+      });
   }
 };
