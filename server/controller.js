@@ -40,10 +40,16 @@ module.exports = {
 
   updateProduct: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { params, query } = req;
+    const { params, query, body } = req;
+    console.log(req.params.id);
 
     dbInstance
-      .update_product([params.id, query.desc])
+      .update_product([
+        +params.id,
+        body.product_name,
+        body.product_image_url,
+        body.product_price
+      ])
       .then(() => res.sendStatus(200))
       .catch(err => {
         res.status(500).send({ errorMessage: "Whoops" });
