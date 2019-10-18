@@ -1,11 +1,22 @@
 import React, { Component } from "react";
+// import Dashboard from "../Dashboard/Dashboard";
+// import Form from "../Form/Form";
+import { HashRouter, Link } from "react-router-dom";
+import routes from "../../routes";
 
 class Header extends Component {
   render() {
     return (
-      <div>
-        <h1>Header</h1>
-      </div>
+      <HashRouter>
+        {/* <Dashboard />
+        <Form /> */}
+        <header>
+          <div>Shelfie</div>
+          <Link to="/">Dashboard</Link>
+          <Link to="/addproduct">Add Inventory</Link>
+        </header>
+        {routes}
+      </HashRouter>
     );
   }
 }
